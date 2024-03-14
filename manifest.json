@@ -1,0 +1,17 @@
+{
+	"name": "PlaybookChecker",
+	"version": "1.0.0",
+	"description": "This is an extension for finding playbooks",
+	"manifest_version": 3,
+	"author": "Kamil Włochyński, Dawid Okojew",
+
+	"action": {
+		"default_title": "PlaybookChecker"
+	},
+	"content_scripts": [
+		{
+			"matches": ["https://enp-ops.app.opsgenie.com/alert/list"],
+			"js": ["index.js"]
+		}
+	]
+}
