@@ -1,17 +1,20 @@
 {
-	"name": "PlaybookChecker",
-	"version": "1.0.0",
-	"description": "This is an extension for finding playbooks",
 	"manifest_version": 3,
-	"author": "Kamil Włochyński, Dawid Okojew",
-
-	"action": {
-		"default_title": "PlaybookChecker"
+	"name": "Opsgenie Redirector",
+	"version": "1.0",
+	"description": "Redirect to playbook",
+	"permissions": ["activeTab", "scripting", "notifications", "alarms"],
+	"background": {
+		"service_worker": "background.js"
 	},
+	"host_permissions": ["https://*.opsgenie.com/*"],
+
 	"content_scripts": [
 		{
-			"matches": ["https://enp-ops.app.opsgenie.com/alert/list"],
-			"js": ["index.js"]
+			"matches": ["https://*.opsgenie.com/alert/list*"],
+			"run_at": "document_end",
+			"all_frames": true,
+			"js": ["content.js"]
 		}
 	]
 }
